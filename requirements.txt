@@ -1,0 +1,10 @@
+numpy==1.22
+pyside6==6.0
+black==22.1
+scipy
+matplotlib
+ipython
+jupyter
+pandas
+sympy
+nose
