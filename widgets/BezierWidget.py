@@ -242,13 +242,23 @@ class BezierVisualizationWidget(QWidget):
             )
 
         pen.setColor(QColor(qRgb(*POINT_COLOR)))
-        pen.setWidth(PEN_WIDTH + 2)
+        pen.setWidth(PEN_WIDTH + 4)
         painter.setPen(pen)
 
         for coord in self.coords:
             painter.drawPoint(
                 self.ORIGIN[0] + coord[0] * self.scale,
                 self.ORIGIN[1] - coord[1] * self.scale,
+            )
+
+        pen.setWidth(PEN_WIDTH)
+        painter.setPen(pen)
+        for i in range(len(self.coords) - 1):
+            painter.drawLine(
+                self.ORIGIN[0] + self.coords[i][0] * self.scale,
+                self.ORIGIN[1] - self.coords[i][1] * self.scale,
+                self.ORIGIN[0] + self.coords[i + 1][0] * self.scale,
+                self.ORIGIN[1] - self.coords[i + 1][1] * self.scale,
             )
 
     def calculate_bezier(self):
